@@ -1,8 +1,13 @@
-The README File
+README
 
-Each assignment and lab shall include a README file that describes the work. This description must:
 
-Identify what aspects of the work have been correctly implemented and what have not.
-Identify anyone with whom you have collaborated or discussed the assignment.
+
+Everything Works Correctly for this Lab.
+
+I talked to Chadd Yuan, about how to only show part of the photo
+depending on the pixels
+
 Say approximately how many hours you have spent completing the assignment.
-Be written in either text format (README.txt) or in Markdown (README.md). Markdown is preferred. No other formats will be accepted. Please use all capital letters for README
+
+2 hours
+
