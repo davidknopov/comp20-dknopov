@@ -11,10 +11,272 @@
 <h1 id="title">Rick Roll</h1>
 
 <video src="https://www.cs.tufts.edu/comp/20/rickroll.mp4" id="rickroll" controls></video>
+
 <div id="lyrics"></div>
 
 <script>
-	// Complete this section and create a CSS file named style.css
+
+		video = document.getElementById("rickroll");
+		video.addEventListener("timeupdate",print_lyrics);
+		
+		
+
+		lyrics = document.getElementById("lyrics");
+
+
+		
+		function print_lyrics()
+		{
+				if ( video.currentTime > 18 && video.currentTime < 22)
+				{
+					lyrics.innerHTML = "We're no strangers to love"
+				}
+				if ( video.currentTime > 22 && video.currentTime < 27)
+				{
+					lyrics.innerHTML = "You know the rules and so do I"
+				}
+				if ( video.currentTime > 27 && video.currentTime < 30)
+				{
+					lyrics.innerHTML = "A full commitment's what I'm thinking of"
+				}
+				if ( video.currentTime > 30 && video.currentTime < 35)
+				{
+					lyrics.innerHTML = "You wouldn't get this from any other guy"
+				}
+				if ( video.currentTime > 35 && video.currentTime < 40)
+				{
+					lyrics.innerHTML = "I just wanna tell you how I'm feeling"
+				}
+				if ( video.currentTime > 40  && video.currentTime < 43)
+				{
+					lyrics.innerHTML = "Gotta make you understand"
+				}
+				if ( video.currentTime > 43 && video.currentTime < 45)
+				{
+					lyrics.innerHTML = "Never gonna give you up"
+				}
+				if ( video.currentTime > 45 && video.currentTime < 47)
+				{
+					lyrics.innerHTML = "Never gonna let you down"
+				}
+				if ( video.currentTime > 47 && video.currentTime < 51)
+				{
+					lyrics.innerHTML = "Never gonna run around and desert you"
+				}
+				if ( video.currentTime > 51 && video.currentTime < 53)
+				{
+					lyrics.innerHTML = "Never gonna make you cry"
+				}
+				if ( video.currentTime > 53 && video.currentTime < 56)
+				{
+					lyrics.innerHTML = "Never gonna say goodbye"
+				}
+				if ( video.currentTime > 56 && video.currentTime < 60)
+				{
+					lyrics.innerHTML = "Never gonna tell a lie and hurt you"
+				}
+				if ( video.currentTime > 60 && video.currentTime < 64)
+				{
+					lyrics.innerHTML = "We've known each other for so long"
+				}
+				if ( video.currentTime > 64 && video.currentTime < 67)
+				{
+					lyrics.innerHTML = "Your heart's been aching, but"
+				}
+				if ( video.currentTime > 67 && video.currentTime < 69)
+				{
+					lyrics.innerHTML = "You're too shy to say it"
+				}
+				if ( video.currentTime > 69 && video.currentTime < 73)
+				{
+					lyrics.innerHTML = "Inside, we both know what's been going on"
+				}
+				if ( video.currentTime > 73 && video.currentTime < 77)
+				{
+					lyrics.innerHTML = "We know the game and we're gonna play it"
+				}
+				if ( video.currentTime > 77 && video.currentTime < 81)
+				{
+					lyrics.innerHTML = "And if you ask me how I'm feeling"
+				}
+				if ( video.currentTime > 81 && video.currentTime < 85)
+				{
+					lyrics.innerHTML = "Don't tell me you're too blind to see"
+				}
+				if ( video.currentTime > 85 && video.currentTime < 87)
+				{
+					lyrics.innerHTML = "Never gonna give you up"
+				}
+				if ( video.currentTime > 87 && video.currentTime < 89)
+				{
+					lyrics.innerHTML = "Never gonna let you down"
+				}
+				if ( video.currentTime > 89 && video.currentTime < 93)
+				{
+					lyrics.innerHTML = "Never gonna run around and desert you"
+				}
+				if ( video.currentTime > 93 && video.currentTime < 95)
+				{
+					lyrics.innerHTML = "Never gonna make you cry"
+				}
+				if ( video.currentTime > 95 && video.currentTime < 97)
+				{
+					lyrics.innerHTML = "Never gonna say goodbye"
+				}
+				if ( video.currentTime > 97 && video.currentTime < 102)
+				{
+					lyrics.innerHTML = "Never gonna tell a lie and hurt you"
+				}
+				if ( video.currentTime > 102 && video.currentTime < 104)
+				{
+					lyrics.innerHTML = "Never gonna give you up"
+				}
+				if ( video.currentTime > 104 && video.currentTime < 106)
+				{
+					lyrics.innerHTML = "Never gonna let you down"
+				}
+				if ( video.currentTime > 106 && video.currentTime < 110)
+				{
+					lyrics.innerHTML = "Never gonna run around and desert you"
+				}
+				if ( video.currentTime > 110 && video.currentTime < 112)
+				{
+					lyrics.innerHTML = "Never gonna make you cry"
+				}
+				if ( video.currentTime > 112 && video.currentTime < 114)
+				{
+					lyrics.innerHTML = "Never gonna say goodbye"
+				}
+				if ( video.currentTime > 114 && video.currentTime < 120)
+				{
+					lyrics.innerHTML = "Never gonna tell a lie and hurt you"
+				}
+				if ( video.currentTime > 120 && video.currentTime < 124)
+				{
+					lyrics.innerHTML = "(Ooh, give you up)"
+				}
+				if ( video.currentTime > 124 && video.currentTime < 128)
+				{
+					lyrics.innerHTML = "(Ooh, give you up)"
+				}
+				if ( video.currentTime > 128 && video.currentTime < 130)
+				{
+					lyrics.innerHTML = "Never gonna give, never gonna give"
+				}
+				if ( video.currentTime > 130 && video.currentTime < 132)
+				{
+					lyrics.innerHTML = "(Give you up)"
+				}
+				if ( video.currentTime > 132 && video.currentTime < 134) 
+				{
+					lyrics.innerHTML = "Never gonna give, never gonna give"
+				}
+				if ( video.currentTime > 134 && video.currentTime < 137)
+				{
+					lyrics.innerHTML = "(Give you up)"
+				}
+				if ( video.currentTime > 137 && video.currentTime < 140)
+				{
+					lyrics.innerHTML = "We've known each other for so long"
+				}
+				if ( video.currentTime > 140 && video.currentTime < 142)
+				{
+					lyrics.innerHTML = "Your heart's been aching, but"
+				}
+				if ( video.currentTime >142 && video.currentTime < 145)
+				{
+					lyrics.innerHTML = "You're too shy to say it"
+				}
+				if ( video.currentTime > 145 && video.currentTime < 149)
+				{
+					lyrics.innerHTML = "Inside, we both know what's been going on"
+				}
+				if ( video.currentTime > 149 && video.currentTime < 153)
+				{
+					lyrics.innerHTML = "We know the game and we're gonna play it"
+				}
+				if ( video.currentTime > 153 && video.currentTime < 158)
+				{
+					lyrics.innerHTML = "I just wanna tell you how I'm feeling"
+				}
+				if ( video.currentTime > 158 && video.currentTime < 161)
+				{
+					lyrics.innerHTML = "Gotta make you understand"
+				}
+				if ( video.currentTime > 161 && video.currentTime < 163)
+				{
+					lyrics.innerHTML = "Never gonna give you up"
+				}
+				if ( video.currentTime > 163 && video.currentTime < 165)
+				{
+					lyrics.innerHTML = "Never gonna let you down"
+				}
+				if ( video.currentTime >165 && video.currentTime < 169)
+				{
+					lyrics.innerHTML = "Never gonna run around and desert you"
+				}
+				if ( video.currentTime > 169 && video.currentTime < 171)
+				{
+					lyrics.innerHTML = "Never gonna make you cry"
+				}
+				if ( video.currentTime > 171 && video.currentTime < 174)
+				{
+					lyrics.innerHTML = "Never gonna say goodbye"
+				}
+				if ( video.currentTime > 174 && video.currentTime < 178)
+				{
+					lyrics.innerHTML = "Never gonna tell a lie and hurt you"
+				}
+				if ( video.currentTime > 178 && video.currentTime < 180)
+				{
+					lyrics.innerHTML = "Never gonna give you up"
+				}
+				if ( video.currentTime > 180 && video.currentTime < 182)
+				{
+					lyrics.innerHTML = "Never gonna let you down"
+				}
+				if ( video.currentTime >182 && video.currentTime < 186)
+				{
+					lyrics.innerHTML = "Never gonna run around and desert you"
+				}
+				if ( video.currentTime > 186 && video.currentTime < 188)
+				{
+					lyrics.innerHTML = "Never gonna make you cry"
+				}
+				if ( video.currentTime > 188 && video.currentTime < 191)
+				{
+					lyrics.innerHTML = "Never gonna say goodbye"
+				}
+				if ( video.currentTime > 191 && video.currentTime < 195)
+				{
+					lyrics.innerHTML = "Never gonna tell a lie and hurt you"
+				}
+		 		if ( video.currentTime > 195 && video.currentTime < 197)
+				{
+					lyrics.innerHTML = "Never gonna give you up"
+				}
+				if ( video.currentTime > 197 && video.currentTime < 199)
+				{
+					lyrics.innerHTML = "Never gonna let you down"
+				}
+				if ( video.currentTime >199 && video.currentTime < 203)
+				{
+					lyrics.innerHTML = "Never gonna run around and desert you"
+				}
+				if ( video.currentTime > 203 && video.currentTime < 205)
+				{
+					lyrics.innerHTML = "Never gonna make you cry"
+				}
+				if ( video.currentTime > 205 && video.currentTime < 207)
+				{
+					lyrics.innerHTML = "Never gonna say goodbye"
+				}
+				if ( video.currentTime > 207 && video.currentTime < 210)
+				{
+					lyrics.innerHTML = "Never gonna tell a lie and hurt you"
+				}
+		}
 </script>
+
 </body>
 </html>	
