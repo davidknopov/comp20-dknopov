@@ -6,6 +6,9 @@
 	color: white;
 	text-align: center;
 	background-color: pink;
+	border-color: red;
+	border-style: solid;
+
 }
 
 body
