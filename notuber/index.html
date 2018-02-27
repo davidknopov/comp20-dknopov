@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		
+		<script>
+			Lat = 0;
+			Lng = 0;
+			
+			function getLatLong() 
+			{
+				
+				if (navigator.geolocation) 
+				{ 
+					
+					navigator.geolocation.getCurrentPosition(function(position) 
+					{							
+							myLat = position.coords.latitude;
+							myLng = position.coords.longitude;
+							elem = document.getElementById("info");
+							elem.innerHTML = "<h1>You are in " + myLat + ", " + myLng + "</h1>";
+					});
+					
+				}
+				else 
+				{
+					alert("Geolocation is not supported by your web browser.  What a shame!");
+				}
+			}
+		</script>
+	</head>
+	
+	<body onload="getLatLong()">
+
+		<div id="info">
+			<h1>Getting your location...</h1>
+		</div>
+
+	</body>
+</html>
+
