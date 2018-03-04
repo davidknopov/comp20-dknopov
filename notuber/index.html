@@ -1,44 +1,19 @@
+
+
 <!DOCTYPE html>
 
 <html>
 
 	<head>
-		
-		<script>
-			Lat = 0;
-			Lng = 0;
-			
-			function getLatLong() 
-			{				
-				if (navigator.geolocation) 
-				{ 					
-					navigator.geolocation.getCurrentPosition(function(position) 
-					{							
-							myLat = position.coords.latitude;
-							myLng = position.coords.longitude;
-							console.log("here");
-							elem = document.getElementById("info");
-							elem.innerHTML = "<h1>You are in " + myLat + ", " + myLng + "</h1>";
-					});
-					
-				}
-				else 
-				{
-					alert("Geolocation is not supported by your web browser.");
-				}
-			}
-
-		</script>
-
+		<title>Geolocation Map Example</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<script src="https://maps.google.com/maps/api/js?key=AIzaSyAXQj8hE9FKQCrhQp0Nv-71DCPFAT60R8M"></script>
+		<link rel="stylesheet" href="style.css" />
+		<script src="create_map.js"></script>
 	</head>
 	
-	<body onload="getLatLong()">
-
-		<div id="info">
-			<h1>Getting your location...</h1>
-		</div>
-
-
+	<body onload="init()">
+		<div id="map_canvas"></div>
+		<div id = "req" ></div>
 	</body>
-</html>
-
+</html
