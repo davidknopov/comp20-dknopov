@@ -1,7 +1,7 @@
 README
 
 
-Everythin is correctly implemented
+Everything is correctly implemented
 
 I collaborated with Chadd Yuan on this assignment
 
