@@ -9,6 +9,7 @@ var myOptions = {
 var map;
 var marker;
 var infowindow = new google.maps.InfoWindow();
+var shortest = 0;
 
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -21,9 +22,10 @@ function getMyLocation() {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			myLat = position.coords.latitude;
 			myLng = position.coords.longitude;
-			renderMap();
-			SendRequest();
 			
+			SendRequest();	
+			renderMap();
+
 		});
 	}
 	else {
@@ -42,7 +44,7 @@ function renderMap() {
 	
 	marker = new google.maps.Marker({
 		position: me,
-		title: "Here I Am!",
+		title: " Username: qrsXYLSLFw, Distance to closest passenger: " + shortest / 1609.344,
 		icon: "baby.jpg"
 	});
 	marker.setMap(map);
@@ -58,13 +60,24 @@ function renderMap() {
 function print_map(lat, long, name) {
 
 var obj = new google.maps.LatLng(lat, long);
+var me = new google.maps.LatLng(myLat, myLng);
+
+var distance = google.maps.geometry.spherical.computeDistanceBetween(obj, me)
+
+
+if (shortest == 0 || shortest > distance)
+{
+	shortest = distance;
+	renderMap();
+}
+
 
 // Update map and go there...
 
 // Create a marker
 	var marker = new google.maps.Marker({
 	position: obj,
-	title: "Lat: " + lat + "\nLong: " + long + "\nname: " + name,
+	title: " Username: " + name + " Distance from me: " + distance / 1609.344,
 	icon: "person.png"
 	});
 	marker.setMap(map);
