@@ -10,6 +10,7 @@ var map;
 var marker;
 var infowindow = new google.maps.InfoWindow();
 var shortest = 0;
+var type;
 
 function init() {
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -21,11 +22,8 @@ function getMyLocation() {
 	if (navigator.geolocation) { 
 		navigator.geolocation.getCurrentPosition(function(position) {
 			myLat = position.coords.latitude;
-			myLng = position.coords.longitude;
-			
+			myLng = position.coords.longitude;		
 			SendRequest();	
-			renderMap();
-
 		});
 	}
 	else {
@@ -39,11 +37,22 @@ function renderMap() {
 	me = new google.maps.LatLng(myLat, myLng);
 
 	map.panTo(me);
+
+
+	if ( type == "passenger")
+	{
+		title = " Username: qrsXYLSLFw, Miles to Closest Passenger " + shortest / 1609.344;
+	}
+	else if ( type == "vehicle")
+	{
+		title = " Username: qrsXYLSLFw, Miles to Closest Driver " + shortest / 1609.344;
+	}
+
 	
 	
 	marker = new google.maps.Marker({
 		position: me,
-		title: " Username: qrsXYLSLFw, Miles to Closest Person " + shortest / 1609.344,
+		title: title,
 		icon: "baby.jpg"
 	});
 	marker.setMap(map);
@@ -68,26 +77,25 @@ function print_map(lat, long, name,type) {
 		renderMap();
 	}
 
-	console.log("here");
+	
 
 	if (type == "vehicle")
 	{
-		var marker = new google.maps.Marker({
-		position: obj,
-		title: " Username: " + name + " Distance from me: " + distance / 1609.344,
-		icon: "person.png"
-		});
-		marker.setMap(map);
+		icon = "car.png";
 	}
 	if (type == "passenger")
 	{
-		var marker = new google.maps.Marker({
+		icon = "person.png";
+	}
+
+
+	var marker = new google.maps.Marker({
 		position: obj,
 		title: " Username: " + name + " Distance from me: " + distance / 1609.344,
-		icon: "car.png"
+		icon: icon
 		});
-		marker.setMap(map);
-	}
+
+	marker.setMap(map);
 
 
 	google.maps.event.addListener(marker, 'click', function() {
@@ -113,31 +121,31 @@ function SendRequest()
   		
      	var result = request.responseText;
      	var obj = JSON.parse(result);
-
-
      	if ( obj.passengers != undefined)
      	{
+     		type = "passenger";
      		for (i = 0; i < obj.passengers.length ; i++)
      		{
      			var lat = obj.passengers[i].lat;
      			var long = obj.passengers[i].lng;
      			var name = obj.passengers[i].username;
-     			print_map(lat,long,name,"passenger");
+     			print_map(lat,long,name,type);
      		}
      	}
      	if ( obj.vehicles != undefined)
      	{
+     		type = "vehicle";
      		for (i = 0; i < obj.vehicles.length ; i++)
      		{
      			var lat = obj.vehicles[i].lat;
      			var long = obj.vehicles[i].lng;
      			var name = obj.vehicles[i].username;
-     			print_map(lat,long,name,"vehicle");
+     			print_map(lat,long,name,type);
      		}
      	}
      	
-     
-  		}
+  
+  	}
 	}
 	request.send("username=qrsXYLSLFw&lat=" + myLat + "&lng=" + myLng);
 
