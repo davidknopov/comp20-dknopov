@@ -43,7 +43,7 @@ function renderMap() {
 	
 	marker = new google.maps.Marker({
 		position: me,
-		title: " Username: qrsXYLSLFw, Miles to closest passenger: " + shortest / 1609.344,
+		title: " Username: qrsXYLSLFw, Miles to Closest Person " + shortest / 1609.344,
 		icon: "baby.jpg"
 	});
 	marker.setMap(map);
@@ -55,13 +55,12 @@ function renderMap() {
 }
 
 
-function print_map(lat, long, name) {
+function print_map(lat, long, name,type) {
 
 	var obj = new google.maps.LatLng(lat, long);
 	var me = new google.maps.LatLng(myLat, myLng);
 
 	var distance = google.maps.geometry.spherical.computeDistanceBetween(obj, me)
-
 
 	if (shortest == 0 || shortest > distance)
 	{
@@ -69,12 +68,27 @@ function print_map(lat, long, name) {
 		renderMap();
 	}
 
-	var marker = new google.maps.Marker({
-	position: obj,
-	title: " Username: " + name + " Nearest Passenger in Miles: " + distance / 1609.344,
-	icon: "person.png"
-	});
-	marker.setMap(map);
+	console.log("here");
+
+	if (type == "vehicle")
+	{
+		var marker = new google.maps.Marker({
+		position: obj,
+		title: " Username: " + name + " Distance from me: " + distance / 1609.344,
+		icon: "person.png"
+		});
+		marker.setMap(map);
+	}
+	if (type == "passenger")
+	{
+		var marker = new google.maps.Marker({
+		position: obj,
+		title: " Username: " + name + " Distance from me: " + distance / 1609.344,
+		icon: "car.png"
+		});
+		marker.setMap(map);
+	}
+
 
 	google.maps.event.addListener(marker, 'click', function() {
 	infowindow.setContent(marker.title);
@@ -100,15 +114,27 @@ function SendRequest()
      	var result = request.responseText;
      	var obj = JSON.parse(result);
 
-     	for (i = 0; i < obj.passengers.length ; i++)
-     	{
-     		var lat = obj.passengers[i].lat;
-     		var long = obj.passengers[i].lng;
-     		var name = obj.passengers[i].username;
-     		print_map(lat,long,name);
 
+     	if ( obj.passengers != undefined)
+     	{
+     		for (i = 0; i < obj.passengers.length ; i++)
+     		{
+     			var lat = obj.passengers[i].lat;
+     			var long = obj.passengers[i].lng;
+     			var name = obj.passengers[i].username;
+     			print_map(lat,long,name,"passenger");
+     		}
      	}
-     
+     	if ( obj.vehicles != undefined)
+     	{
+     		for (i = 0; i < obj.vehicles.length ; i++)
+     		{
+     			var lat = obj.vehicles[i].lat;
+     			var long = obj.vehicles[i].lng;
+     			var name = obj.vehicles[i].username;
+     			print_map(lat,long,name,"vehicle");
+     		}
+     	}
      	
      
   		}
