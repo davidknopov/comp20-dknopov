@@ -143,8 +143,6 @@ function SendRequest()
      			print_map(lat,long,name,type);
      		}
      	}
-     	
-  
   	}
 	}
 	request.send("username=qrsXYLSLFw&lat=" + myLat + "&lng=" + myLng);
