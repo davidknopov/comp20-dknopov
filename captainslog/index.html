@@ -21,7 +21,8 @@
                 {
                     var val = $('#msg').val();
                     $('#msg').val('');
-                    PrintString(val);
+                    if ( val != undefined)
+                        PrintString(val);
                 }
             
         });
