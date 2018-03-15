@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+     
         var log = [];
-        log = '';
 
         $(document).ready(function()
         {
-           
             $('div').html(localStorage.log);
 
             $('input').on('keyup',function(n)
@@ -35,13 +34,12 @@
                               date.toString().substring(16,24) + 
                               date.toString().substring(10,16) +
                                ' - ' + val + '</p>'
-            log = log.slice(0,19) + [post] + log.slice(19,log.length);
+            log =  [post] + log;
             localStorage.log = log;
             $('div').html(log);
         }
-        
-        
     });
+    
 
 
 

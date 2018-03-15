@@ -1,4 +1,22 @@
 body
 {
-	font-size: 12;
+	font-size: 20;
+	text-align: center;
+	background-color: blue;
+	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+	font-color: white;
+
 }
+
+
+#log
+{
+	font-size: 14;
+	text-align: center;
+	background-color: red;
+	font-weight: bold;
+	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+
+}
+
+
