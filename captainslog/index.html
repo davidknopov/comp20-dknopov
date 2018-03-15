@@ -9,9 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         var log = [];
+        log = '';
 
         $(document).ready(function()
         {
+           
             $('div').html(localStorage.log);
 
             $('input').on('keyup',function(n)
@@ -31,12 +33,13 @@
             var date = new Date();
             var post = '<p>'+ date.toString().substring(0,11) + 
                               date.toString().substring(16,24) + 
-                              date.toString().substring(10,16) 
-                              + ' - ' + val + '</p>'
+                              date.toString().substring(10,16) +
+                               ' - ' + val + '</p>'
             log = log.slice(0,19) + [post] + log.slice(19,log.length);
             localStorage.log = log;
-            $('div').html(post);
+            $('div').html(log);
         }
+        
         
     });
 
