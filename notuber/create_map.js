@@ -1,4 +1,3 @@
-
 var myLat = 0;
 var myLng = 0;
 var me = new google.maps.LatLng(myLat, myLng);
@@ -109,12 +108,12 @@ function print_map(lat, long, name,type) {
 
 function SendRequest()
 {
+	var entered = false;
 	var request;
 
 	request = new XMLHttpRequest();
 
-
-	request.open("POST", "https://pure-basin-27130.herokuapp.com/rides", true);
+	request.open("POST", "https://warm-stream-49490.herokuapp.com/rides", true);
 
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -123,7 +122,6 @@ function SendRequest()
   	if (request.readyState == 4 && request.status == 200) {
   		
      	var result = request.responseText;
-     	console.log(responseText);
      	var obj = JSON.parse(result);
      	if ( obj.passengers != undefined)
      	{
@@ -134,6 +132,7 @@ function SendRequest()
      			var long = obj.passengers[i].lng;
      			var name = obj.passengers[i].username;
      			print_map(lat,long,name,type);
+     			entered = true;
      		}
      	}
      	if ( obj.vehicles != undefined)
@@ -145,7 +144,12 @@ function SendRequest()
      			var long = obj.vehicles[i].lng;
      			var name = obj.vehicles[i].username;
      			print_map(lat,long,name,type);
+     			entered = true;
      		}
+     	}
+     	if ( entered == false)
+     	{
+     		renderMap();
      	}
   	}
 	}
