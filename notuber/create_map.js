@@ -1,6 +1,8 @@
+
 var myLat = 0;
 var myLng = 0;
 var me = new google.maps.LatLng(myLat, myLng);
+
 var myOptions = {
 	zoom: 13, 
 	center: me,
@@ -111,7 +113,8 @@ function SendRequest()
 
 	request = new XMLHttpRequest();
 
-	request.open("POST", "https://jordan-marsh.herokuapp.com/rides", true);
+
+	request.open("POST", "https://pure-basin-27130.herokuapp.com/rides", true);
 
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -120,6 +123,7 @@ function SendRequest()
   	if (request.readyState == 4 && request.status == 200) {
   		
      	var result = request.responseText;
+     	console.log(responseText);
      	var obj = JSON.parse(result);
      	if ( obj.passengers != undefined)
      	{
