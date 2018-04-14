@@ -113,7 +113,7 @@ function SendRequest()
 
 	request = new XMLHttpRequest();
 
-	request.open("POST", "https://warm-stream-49490.herokuapp.com/rides", true);
+	request.open("POST", "https://pure-basin-27130.herokuapp.com/rides", true);
 
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -153,6 +153,7 @@ function SendRequest()
      	}
   	}
 	}
-	request.send("username=qrsXYLSLFw&lat=" + myLat + "&lng=" + myLng);
+	//request.send("username=qrsXYLSLFw&lat=" + myLat + "&lng=" + myLng);
+	request.send("username=HIIII&lat=" + myLat + "&lng=" + myLng);
 
 }
