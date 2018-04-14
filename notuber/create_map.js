@@ -153,7 +153,7 @@ function SendRequest()
      	}
   	}
 	}
-	//request.send("username=qrsXYLSLFw&lat=" + myLat + "&lng=" + myLng);
-	request.send("username=HIIII&lat=" + myLat + "&lng=" + myLng);
+	request.send("username=qrsXYLSLFw&lat=" + myLat + "&lng=" + myLng);
+	
 
 }
