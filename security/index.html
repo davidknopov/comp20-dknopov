@@ -16,6 +16,7 @@
           username,lat, lng gets sent to a server and the server gives back information of the opposite type. The not uber service
           then displays a map of all the opposite types ( if you are vehicle then it displays you and passengers around you)  </p>
 
+          <br>
 
       <h1> Methodology </h1>
 
@@ -23,48 +24,145 @@
           Then I looked at the source code of the application, performed a manual code review of it, and attacked it via
           2 methods that I will explain earlier ( this is called "white box" testing)  </p>
 
+          <br>
 
       <h1> Abstract of Findings </h1>
 
 
-       <p>  The main vulnerabilies found was user input. As Ming mentioned in class, never trust the user input. These vulnerabilities were shown through Cross Site Scripting and NoSQL injections which I will explain in the next section. In short, the creator of the server did not do enough security in checking the user input , which lead to a very easy path into hacking his web server. </p>
+       <p> The main vulnerabilities found was user input. As Ming mentioned in class, never trust the user input. These vulnerabilities were shown through Cross Site Scripting and NoSQL injections which I will explain in the next section. In short, the creator of the server did not do enough security in checking the user input , which lead to a very easy path into hacking his web server. 
+
+       <br>
+
+       Another vulnerability I found was the fact that there was too much information given to me within the source code. I will explain all of my findings in detail in the next section</p>
 
 
-      <h1> Issues Found </h1> <href> hacked-result.jpg </href>
+       <br>
 
+      <h1> Issues Found </h1> 
 
-        <p> I typed in the following in curl:  <href> XSS-hacked.jpg </href>
+        <p> 1. Cross-Side Scripting Issue found in home directory ( passenger list):
+        <a href = "https://pure-dawn-41666.herokuapp.com" > homepage </a>
+        <br>
 
-         This produced the following image outcome: 
+          To find this security bug, I typed in the following in curl:  <img src = "XSS-hacked.jpg" alt="XSS"  width="1000" height="100">
 
+        <br>
+        <br>
+        <br>
+        <br>
 
-        This is an example of a Cross Side Scripting attack. I modified the username parameter to display an allert message.
+         This produced the following image outcome:
+          <br>
+        <br>
 
+           <img src = "hacked-result.jpg" alt="XSSResult" width="800" height="400">
+
+         <br>
+        <br>
+
+        This is an example of a Cross Side Scripting attack. I modified the username parameter to display an alert message. I actually inserted a java script alert message within my username data for curl. This script message made the server believe that this code was written within the original
+        server's code which made the alert occur. This is HIGH severity because I basically broke the passenger list, or the home directory. Now whenever
+        you enter the server's home page there is an alert that pops up and reads "hacked" , which will certainly make user's stay away from the site.
 
           </p>
 
+            <br>
+
+          Resolution: This problem can be fixed by checking user input more in depth. If we check to see that there is no script  or check to see
+          that the input is Alphanumeric, this will not occur. In short, the creator of the server must check to see that there is no script 
+          in the username lat or lng.
+            <br>
+            <br>
 
 
+
+
+
+        2. One major issue I found in my partner's code came by just examining his source code. In his main server file (index.js), he has not abstracted much information from me. I can see what database he uses and all the information associated with this database. This leads me to already know what I can attack right away. This is an issue of bad programming practice. I can now look up how to access data and mess up data in mongodb since I know his 
+        server is definitely using this database.
+        <br>
+
+        <img src = "mongodb-badpractice.jpg" alt="XSS"  width="1000" height="250">
+
+        <br>
+        <br>
+
+        This is medium severity, since I could probably eventually narrow down what database the creator is using, but nevertheless this makes things 
+        very simple for me. My resolution for this problem is by hiding this information in another document and linking it with the current index.js
+        so that he can use mongodb but shield it from anyone who sees the source code for his server page.
+
+        
           <p>
 
-              NoSQL database injection: first [ne];
+          <br>
 
+        3a. NoSQL database injection with [$ne] found in /vehicle.json page:  
+          <a href = "https://pure-dawn-41666.herokuapp.com/vehicle.json"> vehicle.json page</a> 
+
+              <br>
+              <br>
+
+               I used this method to find a failure in the page: <br>
+               Here is my input in the vehicle.json and the result. You can see the error here ( pay attention to ne tag).
+
+                <br>
+                <br>
+
+
+                <img src = "ne-injection.jpg" alt="ne-inject" width="1000" height="200">
+          </p>
+
+          <p>
+                
+                <br>
+
+
+              What I did here is include the ne tag in Mongodb which means not equal. By typing this in before typing in JANET ( a vehicle ) I manipulated the mongo database to not search for Janet but search for any other vehicle that has the name not equal to JANET ( this is what hte $ne tag does). This gave me access to finding the information for the vehicle shown above. The Severity for this is HIGH because I only knew JANET was in the database , and I should
+              only be able to access her information, yet with this quick command I found another vehicle's information which should be kept private.
+              
           </p>
 
 
+          <p>   3b. We can also do a NoSQL injection with [$ge] tag. This points out the same NoSQL issue is found in vehicle.json page in 3a. 
+          <br>
+          <br>
+              I did the same thing with ge, which means greater than. By running curl with $ge and a blank string as showin in the image.
+              , any real string would be "greater than"
+              the empty string so I again got the same information I got with the $ne tag. 
+              This is HIGH Severity since I did not know of any vehicles in the 
+              data base yet I got information on a vehicle I did not know existed by a simple tag. This is very scary for the user's information in the data base. 
+          <br>
+            Here is the image:
+      
+              <br>
+              <br>
 
+                <img src = "ge-injection.jpg" alt="ge-inject" width="1000" height="200" >
+
+                <br>
+              <br>
+
+              Resolution: Again this has to deal with user input. I suggest more strict input handling from the user. Mongo-sanitize is a usefull mogno tool to handle fowl inputs. This tool strips out any $ in inputs. There is a helpful tool called Joi which helps with this issue that the creator of the server should look in to. Also Sqreen is another usefull tool. In general just be more on top of what inputs really get passed into your
+              database when you use find or insert.
+
+
+          </p>
 
 
 
       <h1> Conclusion </h1>
 
 
-       <p>   </p>
+       <p>  In Conclusion , the server I was evaluating did a great job on functionality, I could not find anything wrong by black box testing, until
+       I read the documentation to do NoSQL injections and Cross Site Scripting Attacks. My biggest advice to the creator is to never trust user input
+       and really focus on attacking the input provided, breaking it down, and making sure it is in fact Alphanumeric with no $ne or $ge or scripts , etc. </p>
 
 
       <h1> References </h1>
 
-       <p>   </p>
+       <p> <a href="http://www.veracode.com/security/xss"> XSS </a>  </p>
+       <p> <a href="https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html"> Hacking Node JS and MongoDb </a>  </p>
+       <p> <a href="https://www.youtube.com/watch?v=lcO1BTNh8r8"> MING on NoSQL databases </a>  </p>
 
 
   </body>
