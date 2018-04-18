@@ -11,23 +11,49 @@
   <body>
       <h1> Introduction </h1>
 
-      <p>   </p>
+      <p> I have been hired as a security consultant to document and resolve the security and privacy issues in the not uber server 
+          Implemented by Cheng, Cheuk Him Benson. The not uber project is a project in which there are vehicles and passengers, whos 
+          username,lat, lng gets sent to a server and the server gives back information of the opposite type. The not uber service
+          then displays a map of all the opposite types ( if you are vehicle then it displays you and passengers around you)  </p>
 
 
       <h1> Methodology </h1>
 
-       <p>   </p>
+       <p> First, I performed attacks before reading my partner's source code. This is regarded to as "black box" testing.
+          Then I looked at the source code of the application, performed a manual code review of it, and attacked it via
+          2 methods that I will explain earlier ( this is called "white box" testing)  </p>
 
 
       <h1> Abstract of Findings </h1>
 
 
-       <p>   </p>
+       <p>  The main vulnerabilies found was user input. As Ming mentioned in class, never trust the user input. These vulnerabilities were shown through Cross Site Scripting and NoSQL injections which I will explain in the next section. In short, the creator of the server did not do enough security in checking the user input , which lead to a very easy path into hacking his web server. </p>
 
 
-      <h1> Issues Found </h1>
+      <h1> Issues Found </h1> <href> hacked-result.jpg </href>
 
-       <p>   </p>
+
+        <p> I typed in the following in curl:  <href> XSS-hacked.jpg </href>
+
+         This produced the following image outcome: 
+
+
+        This is an example of a Cross Side Scripting attack. I modified the username parameter to display an allert message.
+
+
+          </p>
+
+
+
+          <p>
+
+              NoSQL database injection: first [ne];
+
+          </p>
+
+
+
+
 
 
       <h1> Conclusion </h1>
