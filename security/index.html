@@ -12,9 +12,10 @@
       <h1> Introduction </h1>
 
       <p> I have been hired as a security consultant to document and resolve the security and privacy issues in the not uber server 
-          Implemented by Cheng, Cheuk Him Benson. The not uber project is a project in which there are vehicles and passengers, whos 
-          username,lat, lng gets sent to a server and the server gives back information of the opposite type. The not uber service
-          then displays a map of all the opposite types ( if you are vehicle then it displays you and passengers around you)  </p>
+          Implemented by Cheng, Cheuk Him Benson. The not uber project is a project in which there are vehicles and passengers, who have
+          username,lats, and lngs. This information gets sent to a server and the server gives back information of the opposite type ( passengers to vehicles and vehicles to passengers). 
+          The not uber service
+          then displays a map of all the opposite types.  </p>
 
           <br>
 
@@ -69,7 +70,7 @@
             <br>
 
           Resolution: This problem can be fixed by checking user input more in depth. If we check to see that there is no script  or check to see
-          that the input is Alphanumeric, this will not occur. In short, the creator of the server must check to see that there is no script 
+          that the input is alphanumeric, this will not occur. In short, the creator of the server must check to see that there is no script 
           in the username lat or lng.
             <br>
             <br>
@@ -153,9 +154,9 @@
       <h1> Conclusion </h1>
 
 
-       <p>  In Conclusion , the server I was evaluating did a great job on functionality, I could not find anything wrong by black box testing, until
+       <p>  In conclusion , the server I was evaluating did a great job on functionality, I could not find anything wrong by black box testing, until
        I read the documentation to do NoSQL injections and Cross Site Scripting Attacks. My biggest advice to the creator is to never trust user input
-       and really focus on attacking the input provided, breaking it down, and making sure it is in fact Alphanumeric with no $ne or $ge or scripts , etc. </p>
+       and really focus on attacking the input provided, breaking it down, and making sure it is in fact alphanumeric with no $ne or $ge or scripts , etc. </p>
 
 
       <h1> References </h1>
